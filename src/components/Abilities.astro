@@ -1,0 +1,27 @@
+---
+import type { Skill } from "../interfaces/interface";
+
+const skills: Skill[] = [
+    { name: "Python", logo: "/logos/python.svg" },
+    { name: "JavaScript", logo: "/logos/javascript.svg" },
+    { name: "TypeScript", logo: "/logos/typescript.svg" },
+    { name: "SQL", logo: "/logos/sql.svg" },
+];
+---
+
+<section class="w-full flex flex-wrap justify-center gap-6 p-6">
+    {
+        skills.map((skill) => (
+            <div class="flex flex-col items-center w-24 sm:w-32">
+                <img
+                    src={skill.logo}
+                    alt={skill.name}
+                    class="w-full h-auto max-w-20 sm:max-w-28"
+                />
+                <span class="text-white text-sm sm:text-base font-semibold mt-2">
+                    {skill.name}
+                </span>
+            </div>
+        ))
+    }
+</section>

@@ -1,11 +1,46 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { promise } from "astro:schema";
+import Hero from "../components/Hero.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import Abilities from "../components/Abilities.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const project = await getCollection("projects");
+type Project = (typeof project)[number];
+
+const cardData = {
+	title: "Hola, soy Elvis",
+	description:
+		"Un desarrollador apasionado y aspirante a fotógrafo con un gran interés por las computadoras y el desarrollo abierto.",
+	image: "/me.jpg",
+};
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title="Home">
+	<Hero
+		title={cardData.title}
+		description={cardData.description}
+		image={cardData.image}
+	/>
+
+	<div class="container mx-auto p-6">
+		<h1 class="text-4xl text-center font-bold mb-8">Mis Proyectos</h1>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			{
+				project.map((project) => (
+					<ProjectCard
+						title={project.data.title}
+						description={project.data.description}
+						image={project.data.image.url}
+						link={`/projects/${project.id}/`}
+					/>
+				))
+			}
+		</div>
+		<h1 class="text-4xl text-center font-bold mb-8">Habilidades</h1>
+
+		<Abilities />
+	</div>
+</BaseLayout>

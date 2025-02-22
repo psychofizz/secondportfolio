@@ -1,0 +1,82 @@
+---
+import Profile from "../components/Profile.astro";
+import Section from "../components/Section.astro";
+import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Acerca de">
+    <Profile
+        name="Elvis Durón"
+        description="Hola, soy Elvis. Un desarrollador apasionado y aspirante fotógrafo con un gran interés por las computadoras, el desarrollo abierto, Linux y entender cómo funcionan las cosas."
+    />
+
+    <div class="max-w-3xl mx-auto px-4 py-8">
+        <!-- Sección: Computadoras -->
+        <Section title="Computadoras">
+            <p>
+                Desde pequeño me ha fascinado la tecnología. Usando mi primera
+                computadora, siempre me preguntaba qué significaba todo lo
+                visible en el administrador de tareas. Con el acceso a internet,
+                descubrí que esto era mi pasión.
+            </p>
+            <p>
+                Actualmente, uso <strong>TypeScript, Next.js y React</strong> en
+                la mayoría de mis proyectos. Mi sistema operativo principal es macOS,
+                pero he experimentado con múltiples distros de Linux, aprendiendo
+                mucho en el proceso.
+            </p>
+            <p>
+                Apoyo activamente el <strong>software libre</strong> y me inspira
+                el impacto de proyectos como Blender y el kernel de Linux.
+            </p>
+        </Section>
+
+        <!-- Sección: Bajo Nivel -->
+        <Section title="Bajo Nivel">
+            <p>
+                Me apasiona entender lo que sucede detrás de cada encendido de
+                una computadora. Por un tiempo, me obsesioné con el proceso de
+                arranque en x86 y la arquitectura de procesadores.
+            </p>
+            <p>
+                Siguiendo a Ben Eater, aprendí sobre <strong
+                    >6502 Assembly y ARM Thumb</strong
+                >, lo que me ayudó a comprender la lógica detrás de
+                microcontroladores y circuitos.
+            </p>
+            <p>
+                Con la llegada de mi Mac con M2, profundicé en temas como
+                decodificación de instrucciones, buffers de reorden y registros.
+            </p>
+        </Section>
+
+        <!-- Sección: Fotografía -->
+        <Section title="Fotografía">
+            <p>
+                Desde que mis padres me regalaron una Kodak C350 en 2005, la
+                fotografía ha sido una parte importante de mi vida.
+                Recientemente, adquirí una <strong>Canon Rebel XT</strong> con un
+                <strong>50mm f/1.8 STM</strong>, lo que reavivó mi interés en la
+                ciencia detrás de los sensores de imagen.
+            </p>
+            <p>
+                He investigado sobre cómo el silicio se usa tanto en
+                procesadores como en sensores de cámara. Puedes leer más sobre
+                mis notas en:
+                <a
+                    href="https://lively-cost-e7d.notion.site/Camera-things-12b42a1ccf038038abaef1e3da416af2?pvs=4"
+                    class="text-blue-500 hover:underline"
+                >
+                    Mis notas sobre fotografía y tecnología
+                </a>
+            </p>
+            <p>
+                Admiro a fotógrafos como <strong>Henri Cartier-Bresson</strong> y
+                <strong>Andy Warhol</strong>. Creo que la fotografía es una
+                combinación de arte y técnica, y ambas son esenciales para
+                capturar imágenes impactantes.
+            </p>
+        </Section>
+    </div>
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+import type { ProjectCard } from "../interfaces/interface";
+const { title, description, image, link } = Astro.props as ProjectCard;
+---
+
+<div
+    class="group relative overflow-hidden rounded-lg shadow-lg hover:scale-105 transition-transform"
+>
+    <a href={link} target="_self" rel="noopener noreferrer">
+        <img
+            src={image}
+            alt={title}
+            class="w-full h-64 object-cover group-hover:opacity-80 transition-opacity"
+        />
+        <div
+            class="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 transition-opacity"
+        >
+        </div>
+        <div class="absolute bottom-4 left-4 right-4 text-white">
+            <h2 class="text-xl font-bold">{title}</h2>
+            <p class="text-sm">{description}</p>
+        </div>
+    </a>
+</div>

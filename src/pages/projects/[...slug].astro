@@ -1,0 +1,83 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("projects");
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout>
+    <div class="max-w-3xl mx-auto px-4 py-8">
+        <article class="prose prose-blue lg:prose-lg max-w-none">
+            <Content />
+        </article>
+    </div>
+</BaseLayout>
+
+<style is:global>
+    :where(.prose) {
+        h1 {
+            font-size: 2.5em !important;
+            font-weight: 800 !important;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+        }
+
+        h2 {
+            font-size: 2em !important;
+            font-weight: 700 !important;
+            margin-top: 1.8em;
+            margin-bottom: 0.8em;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.4em;
+            letter-spacing: -0.015em;
+        }
+
+        h3 {
+            font-size: 1.75em !important;
+            font-weight: 700 !important;
+            margin-top: 1.6em;
+            margin-bottom: 0.6em;
+        }
+
+        h4 {
+            font-size: 1.5em !important;
+            font-weight: 650 !important;
+            margin-top: 1.4em;
+            margin-bottom: 0.5em;
+        }
+
+        h5 {
+            font-size: 1.25em !important;
+            font-weight: 650 !important;
+            margin-top: 1.2em;
+            margin-bottom: 0.4em;
+        }
+
+        h6 {
+            font-size: 1.1em !important;
+            font-weight: 600 !important;
+            margin-top: 1em;
+            margin-bottom: 0.3em;
+            color: #4b5563;
+        }
+
+        h1 {
+            background: linear-gradient(15deg, #1d4ed8, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            padding-bottom: 0.3em;
+        }
+    }
+</style>
