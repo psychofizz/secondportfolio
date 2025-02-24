@@ -20,3 +20,17 @@ export interface Hero {
     description: string;
     image: string;
 }
+export interface SidebarLink {
+    name: string;
+    href: string;
+  }
+  
+  export interface SidebarState {
+    isOpen: boolean;
+  }
+  
+  export interface SidebarProps {
+    links: SidebarLink[];
+    state: SidebarState;
+  }
+  

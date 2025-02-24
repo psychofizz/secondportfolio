@@ -2,20 +2,19 @@
 import type { Link } from "../interfaces/interface";
 
 const links: Link[] = [
-    { href: "/", label: "Proyectos" },
+    { href: "/", label: "Home" },
     { href: "/about", label: "Acerca de mí" },
     { href: "/blog", label: "Mi Blog" },
-    { href: "/contact", label: "Contacto" },
 ];
 ---
 
 <nav
-    class="w-full bg-black text-white min-h-12 flex items-center justify-between p-4"
+    class="w-full bg-[#DDEEFF] dark:bg-slate-700 text-[#002244] dark:text-[#DDEEFF] font-mono border-b-4 border-[#002244] dark:border-[#DDEEFF] shadow-lg"
 >
-    <div class="flex items-center w-full justify-between">
+    <div class="flex items-center justify-between p-4">
         <button
             id="menu-toggle"
-            class="lg:hidden p-4 text-white text-2xl focus:outline-none"
+            class="lg:hidden p-3 text-2xl border-2 border-[#002244] bg-[#002244] text-white rounded-md"
         >
             ☰
         </button>
@@ -25,10 +24,9 @@ const links: Link[] = [
                 links.map(({ href, label }) => (
                     <a
                         href={href}
-                        class="p-4 text-xl font-medium relative overflow-hidden group transition-all duration-300 ease-in-out"
+                        class="p-3 text-xl font-semibold font-mono relative transition-all duration-300  rounded-md hover:bg-[#002244] hover:text-white"
                     >
-                        <span class="relative z-10">{label}</span>
-                        <span class="absolute top-0 left-0 w-0 h-full bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 transition-all duration-300 group-hover:w-full z-0" />
+                        [{label}]
                     </a>
                 ))
             }
@@ -36,7 +34,7 @@ const links: Link[] = [
 
         <button
             id="dark-mode-toggle"
-            class="p-3 text-2xl bg-gray-800 text-white dark:bg-white dark:text-black rounded-full transition-all duration-300"
+            class="p-3 text-2xl border-2 border-[#002244] bg-[#002244] text-white rounded-md transition-all duration-300"
         >
             🌙
         </button>
@@ -44,13 +42,13 @@ const links: Link[] = [
 
     <div
         id="mobile-menu"
-        class="hidden flex flex-col bg-black w-full absolute top-16 left-0 p-6 space-y-4 lg:hidden text-xl"
+        class="hidden flex flex-col bg-[#DDEEFF] w-full absolute top-16 left-0 p-6 space-y-4 lg:hidden text-xl border-t-4 border-[#002244]"
     >
         {
             links.map(({ href, label }) => (
                 <a
                     href={href}
-                    class="p-4 text-lg font-semibold block border-b border-gray-700 text-center"
+                    class="p-3 text-lg font-semibold block border-b-2 border-[#002244] text-center hover:bg-[#002244] hover:text-white transition-all"
                 >
                     {label}
                 </a>

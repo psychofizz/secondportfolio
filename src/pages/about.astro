@@ -1,69 +1,69 @@
 ---
-import Profile from "../components/Profile.astro";
 import Section from "../components/Section.astro";
 import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Acerca de">
-    <Profile
-        name="Elvis Durón"
-        description="Hola, soy Elvis. Un desarrollador apasionado y aspirante fotógrafo con un gran interés por las computadoras, el desarrollo abierto, Linux y entender cómo funcionan las cosas."
-    />
-
     <div class="max-w-3xl mx-auto px-4 py-8">
-        <!-- Sección: Computadoras -->
-        <Section title="Computadoras">
+        <h1 class="text-3xl font-semibold">Elvis Durón</h1>
+        <p class="text-sm text-gray-300 text-center mt-2">
+            Hola, soy Elvis. Un desarrollador apasionado y aspirante a fotógrafo
+            con un gran interés por la tecnología, el desarrollo abierto y
+            comprender cómo funcionan las cosas.
+        </p>
+
+        <article class="prose mt-8">
+            <h2 class="text-2xl font-semibold mt-8">Computadoras</h2>
             <p>
-                Desde pequeño me ha fascinado la tecnología. Usando mi primera
-                computadora, siempre me preguntaba qué significaba todo lo
-                visible en el administrador de tareas. Con el acceso a internet,
-                descubrí que esto era mi pasión.
+                Desde pequeño, la tecnología me ha fascinado. Recuerdo explorar
+                mi primera computadora y preguntarme qué significaban todos los
+                procesos en el administrador de tareas. Con el acceso a
+                internet, descubrí que esto era mi verdadera pasión.
             </p>
             <p>
-                Actualmente, uso <strong>TypeScript, Next.js y React</strong> en
-                la mayoría de mis proyectos. Mi sistema operativo principal es macOS,
-                pero he experimentado con múltiples distros de Linux, aprendiendo
-                mucho en el proceso.
+                Actualmente, desarrollo con <strong
+                    >TypeScript, Next.js y React</strong
+                >. Aunque mi sistema operativo principal es macOS, he
+                experimentado con múltiples distribuciones de Linux, lo que me
+                ha permitido aprender mucho en el proceso.
             </p>
             <p>
-                Apoyo activamente el <strong>software libre</strong> y me inspira
+                Soy un firme defensor del <strong>software libre</strong> y me inspira
                 el impacto de proyectos como Blender y el kernel de Linux.
             </p>
-        </Section>
 
-        <!-- Sección: Bajo Nivel -->
-        <Section title="Bajo Nivel">
+            <h2 class="text-2xl font-semibold mt-8">Bajo Nivel</h2>
             <p>
-                Me apasiona entender lo que sucede detrás de cada encendido de
-                una computadora. Por un tiempo, me obsesioné con el proceso de
+                Me apasiona comprender lo que ocurre tras cada encendido de una
+                computadora. Durante un tiempo, me obsesioné con el proceso de
                 arranque en x86 y la arquitectura de procesadores.
             </p>
             <p>
-                Siguiendo a Ben Eater, aprendí sobre <strong
+                Inspirado por el trabajo de Ben Eater, he aprendido sobre <strong
                     >6502 Assembly y ARM Thumb</strong
-                >, lo que me ayudó a comprender la lógica detrás de
+                >, lo que me ha ayudado a entender la lógica detrás de
                 microcontroladores y circuitos.
             </p>
             <p>
-                Con la llegada de mi Mac con M2, profundicé en temas como
-                decodificación de instrucciones, buffers de reorden y registros.
+                Con la llegada de mi Mac con M2, profundicé en temas como la
+                decodificación de instrucciones, buffers de reorden y registros,
+                ampliando mi conocimiento sobre la arquitectura de procesadores
+                modernos.
             </p>
-        </Section>
 
-        <!-- Sección: Fotografía -->
-        <Section title="Fotografía">
+            <h2 class="text-2xl font-semibold mt-8">Fotografía</h2>
             <p>
                 Desde que mis padres me regalaron una Kodak C350 en 2005, la
-                fotografía ha sido una parte importante de mi vida.
-                Recientemente, adquirí una <strong>Canon Rebel XT</strong> con un
-                <strong>50mm f/1.8 STM</strong>, lo que reavivó mi interés en la
-                ciencia detrás de los sensores de imagen.
+                fotografía ha sido una parte esencial de mi vida. Recientemente,
+                adquirí una <strong>Canon Rebel XT</strong> con un <strong
+                    >50mm f/1.8 STM</strong
+                >, lo que reavivó mi interés en la ciencia detrás de los
+                sensores de imagen.
             </p>
             <p>
-                He investigado sobre cómo el silicio se usa tanto en
-                procesadores como en sensores de cámara. Puedes leer más sobre
-                mis notas en:
+                Me he dedicado a investigar cómo el silicio se utiliza tanto en
+                procesadores como en sensores de cámara. Puedes leer más en:
                 <a
                     href="https://lively-cost-e7d.notion.site/Camera-things-12b42a1ccf038038abaef1e3da416af2?pvs=4"
                     class="text-blue-500 hover:underline"
@@ -74,9 +74,69 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <p>
                 Admiro a fotógrafos como <strong>Henri Cartier-Bresson</strong> y
                 <strong>Andy Warhol</strong>. Creo que la fotografía es una
-                combinación de arte y técnica, y ambas son esenciales para
-                capturar imágenes impactantes.
+                fusión entre arte y técnica, ambas esenciales para capturar
+                imágenes impactantes.
             </p>
-        </Section>
+        </article>
     </div>
 </BaseLayout>
+
+<style is:global>
+    :where(.prose) {
+        h1 {
+            font-size: 2.5em !important;
+            font-weight: 800 !important;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+        }
+
+        h2 {
+            font-size: 2em !important;
+            font-weight: 700 !important;
+            margin-top: 1.8em;
+            margin-bottom: 0.8em;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.4em;
+            letter-spacing: -0.015em;
+        }
+
+        h3 {
+            font-size: 1.75em !important;
+            font-weight: 700 !important;
+            margin-top: 1.6em;
+            margin-bottom: 0.6em;
+        }
+
+        h4 {
+            font-size: 1.5em !important;
+            font-weight: 650 !important;
+            margin-top: 1.4em;
+            margin-bottom: 0.5em;
+        }
+
+        h5 {
+            font-size: 1.25em !important;
+            font-weight: 650 !important;
+            margin-top: 1.2em;
+            margin-bottom: 0.4em;
+        }
+
+        h6 {
+            font-size: 1.1em !important;
+            font-weight: 600 !important;
+            margin-top: 1em;
+            margin-bottom: 0.3em;
+            color: #4b5563;
+        }
+
+        h1 {
+            background: linear-gradient(15deg, #1d4ed8, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            padding-bottom: 0.3em;
+        }
+    }
+</style>

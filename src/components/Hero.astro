@@ -3,7 +3,6 @@ import type { Hero } from "../interfaces/interface";
 
 const { title, description, image } = Astro.props as Hero;
 
-// Obtener la hora actual de Tegucigalpa (UTC-6)
 const now = new Date();
 const options: Intl.DateTimeFormatOptions = {
     timeZone: "America/Tegucigalpa",
@@ -16,26 +15,26 @@ const currentTime = now.toLocaleTimeString("es-HN", options);
 ---
 
 <div
-    class="bg-white text-black dark:bg-black dark:text-white min-h-64 overflow-hidden m-3 rounded-lg shadow-lg hover:scale-102 transition-transform"
+    class="bg-[#DDEEFF] dark:bg-slate-700 text-[#002244] font-mono border-4 border-[#002244] dark:border-[#DDEEFF] darkmin-h-64 overflow-hidden m-3 rounded-lg shadow-2xl hover:scale-[1.02] transition-transform"
 >
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
         <div class="flex justify-center items-center relative">
-            <!-- Imagen -->
+            <!-- guapo -->
             <img
-                class="object-cover shadow-xl rounded-full w-64 h-64 transform transition-transform hover:scale-102"
+                class="object-cover shadow-2xl border-4 border-[#002244] rounded-full w-64 h-64 transform transition-transform hover:scale-[1.02]"
                 src={image}
                 alt={title}
             />
 
             <div
-                class="absolute bottom-4 left-4 bg-black font-mono dark:bg-white text-white dark:text-black px-4 py-2 rounded-full shadow-md text-sm"
+                class="absolute bottom-4 left-4 bg-[#002244] text-white px-4 py-2 rounded-full shadow-lg text-sm border-2 border-white"
             >
                 <p>Tegucigalpa, Honduras</p>
                 <p>{currentTime}</p>
             </div>
 
             <div
-                class="absolute top-4 right-4 bg-black font-mono dark:bg-black text-white dark:text-black px-4 py-2 rounded-full shadow-md text-sm flex items-center gap-2"
+                class="absolute top-4 right-4 bg-[#002244] text-white px-4 py-2 rounded-full shadow-lg text-sm flex items-center gap-2 border-2 border-white"
             >
                 <div class="w-2 h-2 bg-green-500 rounded-full animate-ping">
                 </div>
@@ -45,11 +44,13 @@ const currentTime = now.toLocaleTimeString("es-HN", options);
 
         <div class="flex flex-col justify-center">
             <h1
-                class="text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500 dark:from-purple-300 dark:to-blue-300 mb-4"
+                class="text-5xl font-semibold text-[#002244] dark:text-[#DDEEFF] mb-4"
             >
                 {title}
             </h1>
-            <h2 class="text-3xl text-gray-800 dark:text-gray-300 mb-4">
+            <h2
+                class="text-3xl text-[#002244] dark:text-[#DDEEFF] opacity-80 mb-4"
+            >
                 {description}
             </h2>
         </div>

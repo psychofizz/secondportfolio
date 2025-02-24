@@ -22,11 +22,10 @@ const { Content } = await render(post);
 
 <BaseLayout>
     <div class="max-w-3xl mx-auto px-4 py-8">
-        <img src=`${post.data.image.url}` alt="" />
-        <h1>{post.data.title}</h1>
-        <h3>{post.data.author}</h3>
-
         <article class="prose prose-lg prose-invert mx-auto py-10">
+            <img src={post.data.image.url} alt="" />
+            <h1>{post.data.title}</h1>
+            <h3>{post.data.author}</h3>
             <Content />
         </article>
     </div>

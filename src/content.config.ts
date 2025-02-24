@@ -20,6 +20,7 @@ const projects = defineCollection({
     loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/projects" }),
     schema: z.object({
       title: z.string(),
+      projectCompletionDate: z.string(),
       description: z.string(),
       image: z.object({
         url: z.string(),
