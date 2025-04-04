@@ -1,0 +1,71 @@
+---
+title: Terraform e-commerce
+description: E-commerce as a code
+projectCompletionDate: 2024-3-4
+image:
+  url: "../terraform.png"
+---
+
+Una organización enfocada al comercio en línea busca evolucionar su plataforma
+con miras a la escalabilidad y la flexibilidad. Han definido ciertos requerimientos
+que involucran ofrecer contenido estático, facilitar dos aplicaciones web distintas
+para los usuarios (pública y administrativa), manejar tareas en segundo plano,
+contar con un almacenamiento de archivos y un componente que acelere las
+consultas más frecuentes. El objetivo es que cada equipo investigue y proponga
+la manera de cumplir estos requerimientos a través de los servicios y la
+infraestructura que considere más adecuados.
+
+# Solución
+
+Empezemos con los requerimientos
+- Dos aplicaciones web para el usuario y un backoffice
+- Almacenamiento de archivos
+- Tareas en segundo plano
+- Componente que acelere las consultas más frecuentes, algo como redis.
+- Contenido estático
+
+## Los 3 repositorios
+- A
+- B
+- C
+
+### A 
+
+https://github.com/psychofizz/terraform-project-a
+
+El repositorio A contiene la infraestructura de mensajeria, osea alguna solucion de azure que permita que cosas ocurran con algun sistema serverless.
+Azure Web PubSub seria nuestra parada, Microsoft ofrece un tutorial, tomando un segmento "In this tutorial, you learn how to use Azure Web PubSub service and Azure Functions to build a serverless application with real-time messaging and the publish-subscribe pattern." 
+
+Si la solución fuera mas real time entonces azure ofrece SignalR. la documentación detalla justamente
+"Chat: live chat rooms, chat bots, on-line customer support, real-time shopping assistants, messengers, and in-game chats."
+ya con eso sabemos que vamos por buen camino con SignalR si fuera mas real time la situación.
+Elegi Web PubSub porque cumple con la descripción de que repo A sea segundo plano, ie serverless.
+
+
+### B
+
+https://github.com/psychofizz/terraform-project-b
+
+Este repo se encarga de levantar la webapp y el backoffice, docker va como comodín en esta solucion ya que es facil de desplegar y desarollar sobre. 
+El backoffice seria como la gente iria subiendo el contenido a la webapp, y el frontend es la webapp en si.
+
+
+### C
+
+https://github.com/psychofizz/terraform-project-c
+
+Este repo contiene la base de datos y la cache. 
+
+La cache fue elegida como redis porque redis como tal provee la solución a la idea de que una consulta que es frecuente podria ser cacheada por un servicio para que esta no impacte el rendimiento de la base de datos sino que sea redirigida a un servicio que solo mande lo que ya ha sido pedido anteriormente.
+
+## Asincronia
+
+Como lo discutido en clase, la parte buena de la asincronia es que una actividad no bloquea que un usuario se este esperando a que termine una labor. El serverless podria por ejemplo ser algo para correos, o para mensajeria de que tal cosa fue comprada y recibida un poco despues. Un ejemplo podria ser como BAC maneja los pagos, el correo recibe un mensaje de “BAC Credomatic Informa…” que una transaccion fue hecha, esta mas segura es algo asincrono ya que el tiempo en el que llega al correo no es exactamene inmediato a cuando la transaccion de la tarjeta es hecha, sino que sirve como un mensaje para ver que el movimiento fue exitoso o no exitoso y porque. Pero no tuvo que ser en tiempo real sino que ya cuando el usuario esta llegando al carro.
+
+Muchos ecommerces han de implementar asincronia en cuanto a las compras hechas, se me ocurre de entrada steam, la plataforma mas grande de venta de videojuegos punto. nada de Epic games aqui.
+
+# Conclusiones
+
+Montar aplicaciones por aqui recuerda mucho a como ansible puede levantar y configurar un monton de cosas simultaneamente, o crear un install script para un ubuntu ya que inevitablemente algun conflicto con gnome o apt o otro servicio repentinamente no quiere arrancar y el unico acceso a la maquina se convierte por tty y soluciones por telefono. 
+
+Montar infraestructura asi deja menos a chance, ya que un humano no esta configurando todo esto pero un script practicamente. Se le da los parametros necesarios y este solo se levanta y configura al gusto.
