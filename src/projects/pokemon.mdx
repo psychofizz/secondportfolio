@@ -25,3 +25,14 @@ El sistema usa todas las funcionalidades de las pocas clases que tuvimos en cuan
 A cada paso este sistema de serverless fue un desafio porque no se pueden ver que es lo que anda mal cuando uno intenta modificar
 Te quedas dando vueltas sin saber si el problema está en el código, en el entorno o en algún otro lado, y al final terminas confiando en los logs y las métricas, que a veces no te dan toda la información que necesitas para entender bien qué anda mal.
 Implementar borrar los reportes viejos fue un dolor de cabeza porque no hay una manera facil de ver que es lo que se esta borrando sino que hay que ya saberse el nombre de lo que se va a borrar
+
+# funcionalidad 
+Cuando el usuario presiona el botón de generar reporte, el backend hace que caiga el mensaje en Queue Storage. El serverless luego se encarga de traer la información de los Pokémon que el usuario ha seleccionado bueno serian dos funciones, una que primero consigue los pokemons de esa categoria en especifico osea Fuego Hielo Pelea, etc y luego busca por cada link de cada uno para obtener mas detalles que fueron pedidos como la vida, defensa y otros atributos. 
+Luego la serverless se encarga de generar un reporte csv usando pandas, lo vimos en Google Colab para ver que estaban haciendo primero los campos y si tenia sentido lo que estabamos haciendo.
+Por ultimo son guardados en Blob Storage y el usuario podria descargarlos de la pagina ya. 
+
+# Extras
+Se implemento el sistema que borra los reportes viejos cuando se toca un boton. 
+Los cambios fueron los que estaban en el documento
+Igualmente se implemento este cambio que se traigan mas atributos de los pokemon.
+Y por ultimo se implemento de manera parcial el uso de sample size para que se traigan menos pokemons de los que se traen por la api
