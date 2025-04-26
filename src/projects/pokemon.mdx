@@ -21,10 +21,36 @@ https://github.com/psychofizz/poke.queue.ui
 El sistema es bien simple lo que hace es que toma una variedad de pokemon y luego por medio de toda la funcionalidad de Azure Serverless Functions y la api de Pokeapi v2 hace un reporte de manera background que luego es descargable por el usuario desde un blob storage
 El sistema usa todas las funcionalidades de las pocas clases que tuvimos en cuanto a aprender de azure. 
 
+# Arquitectura
+Se puede subdividir en 4 partes: 
+- La Storage account que tiene el Blob Storage y el Queue Storage
+- La App Service Plan que se encarga de tener los contenedores de docker que contienen la UI y el backend
+- La Function App que contiene las funciones serverless que se encargan de crear los reportes y de borrar los reportes viejos
+- La SQL Database que contiene la base de datos que se encarga de guardar los reportes generados y el estado de los mismos
+
+# Tecnologias Clave:
+- Azure Storage Account
+- Azure App Service Plan
+- Azure Function App
+- Azure SQL Database
+- Azure Queue Storage
+- Azure Blob Storage
+- Azure Web App
+
+## Storage Account
+Es donde se estara usando el sistema de Blob y Queue Storage. 
+Aqui Queue storage sirve como una manera de tener servicios background para que cuando un usuario requiere de algun servicio este no pare la sincronia de la api
+Sino que los servicios se mantengan de segundo plano y se genere a su tiempo. 
+Blob Storage es donde se guardan los reportes generados por el serverless. 
+
 # Retos
 A cada paso este sistema de serverless fue un desafio porque no se pueden ver que es lo que anda mal cuando uno intenta modificar
 Te quedas dando vueltas sin saber si el problema está en el código, en el entorno o en algún otro lado, y al final terminas confiando en los logs y las métricas, que a veces no te dan toda la información que necesitas para entender bien qué anda mal.
 Implementar borrar los reportes viejos fue un dolor de cabeza porque no hay una manera facil de ver que es lo que se esta borrando sino que hay que ya saberse el nombre de lo que se va a borrar
+
+En general un detalle que veo de Azure es que acceder a Logs de lo que salio mal es un reto en general, la aplicación no puede depender de los servicios de Azure porque por ejemplo no tienen logging en tiempo real para por ejemplo la WebApp desplegada
+Lo que hace dificil ver porque ocurrio un error 500. 
+
 
 # funcionalidad 
 Cuando el usuario presiona el botón de generar reporte, el backend hace que caiga el mensaje en Queue Storage. El serverless luego se encarga de traer la información de los Pokémon que el usuario ha seleccionado bueno serian dos funciones, una que primero consigue los pokemons de esa categoria en especifico osea Fuego Hielo Pelea, etc y luego busca por cada link de cada uno para obtener mas detalles que fueron pedidos como la vida, defensa y otros atributos. 
