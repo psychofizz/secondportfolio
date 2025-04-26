@@ -1,0 +1,27 @@
+---
+title: Pokemon
+description: Plataforma de reportes
+projectCompletionDate: 2025-26-4
+image:
+  url: "../pokemon.png"
+---
+
+# Links
+https://ui-pokequeueelvis-dev.azurewebsites.net/
+https://api-pokequeueelvis-dev.azurewebsites.net/docs#/
+
+# Repositorios
+https://github.com/psychofizz/poke.terraform
+https://github.com/psychofizz/poke.queue.api
+https://github.com/psychofizz/poke.queue.sql
+https://github.com/psychofizz/poke.queue.function
+https://github.com/psychofizz/poke.queue.ui
+
+# Descripción
+El sistema es bien simple lo que hace es que toma una variedad de pokemon y luego por medio de toda la funcionalidad de Azure Serverless Functions y la api de Pokeapi v2 hace un reporte de manera background que luego es descargable por el usuario desde un blob storage
+El sistema usa todas las funcionalidades de las pocas clases que tuvimos en cuanto a aprender de azure. 
+
+# Retos
+A cada paso este sistema de serverless fue un desafio porque no se pueden ver que es lo que anda mal cuando uno intenta modificar
+Te quedas dando vueltas sin saber si el problema está en el código, en el entorno o en algún otro lado, y al final terminas confiando en los logs y las métricas, que a veces no te dan toda la información que necesitas para entender bien qué anda mal.
+Implementar borrar los reportes viejos fue un dolor de cabeza porque no hay una manera facil de ver que es lo que se esta borrando sino que hay que ya saberse el nombre de lo que se va a borrar
